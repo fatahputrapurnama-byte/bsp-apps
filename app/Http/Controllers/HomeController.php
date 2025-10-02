@@ -20,7 +20,7 @@ class HomeController extends Controller
     }
     public function index() {
         $data = News::latest();
-        $dataTraining = Training::get();
+       // $dataTraining = Training::get();
         $dataConsultation = Consultation::get();
         $dataAuditing = Auditing::get();
         $dataBimtek = Bimtek::get();
@@ -28,7 +28,7 @@ class HomeController extends Controller
         $dataClient = Client::get();
         return view('landing.index',[
             "news" => $data->paginate(6)->withQueryString(),
-            "training" => $dataTraining,
+            //"training" => $dataTraining,
             "consultation" => $dataConsultation,
             "auditing" => $dataAuditing,
             "bimtek" => $dataBimtek,
