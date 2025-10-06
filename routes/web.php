@@ -34,6 +34,7 @@ Route::get('/bimtek/{id}', [HomeController::class, 'bimtek']);
 Route::get('/kajianstudy/{id}', [HomeController::class, 'kajianStudy']);
 Route::get('/services', [HomeController::class, 'services']);
 Route::post('/contact', [HomeController::class, 'contact'])->name('contact');
+
 // Route::get('/data', [HomeController::class, 'index'])->name('index');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
