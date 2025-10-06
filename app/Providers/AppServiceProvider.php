@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\URL;
+
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 
@@ -27,9 +27,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if(request()->header('x-forwarded-proto') === 'https')
-        {
-            URL::forceScheme('https');
-        }
+        Paginator::useBootstrapFive();
+        
+        Gate::define('admin', function (User $user) {
+            return $user->is_admin == 1;
+        });
     }
 }
